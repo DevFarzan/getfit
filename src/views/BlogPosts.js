@@ -83,13 +83,13 @@ class BlogPosts extends React.Component {
      })
   }
    getAllTrainner(){
-    fetch('http://localhost:8000/gettrainner')
+    fetch('https://getfit-server.herokuapp.com/gettrainner')
   .then(response => response.json())
   .then(data => this.setState({ allUsers:data.content}));
   }
 
   getAllTrainne(){
-   fetch('http://localhost:8000/gettrainny')
+   fetch('https://getfit-server.herokuapp.com/gettrainny')
  .then(response => response.json())
  .then(data => this.setState({ alltrainny:data.content}));
  }

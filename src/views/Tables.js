@@ -173,7 +173,7 @@ class Tables extends React.Component {
 }
 
   async getAllBusiness(){
-    fetch('http://localhost:8000/getuser')
+    fetch('https://getfit-server.herokuapp.com/getuser')
  .then(response => response.json())
  .then(data => this.setState({ allUsers:data.content}));
 
