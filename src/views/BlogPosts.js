@@ -33,7 +33,8 @@ class BlogPosts extends React.Component {
       selectedTrainny:'',
       selectedTrainnyId:'',
       about:{},
-      alertSuccess:false
+      alertSuccess:false,
+      trainnyProfile:[],
     }
   }
   componentDidMount () {
@@ -58,9 +59,17 @@ class BlogPosts extends React.Component {
       })
     }
     else if(obj.type == 'trainee'){
-      await this.setState({
-        selectedTrainny:obj.name,
-        selectedTrainnyId:obj._id
+      let idObject = {
+        userId:obj._id
+      }
+      let res = await HttpUtils.post('getprofile',idObject);
+      //console.log(res.content[0].name,'gettingProfile')
+      //  this.setState({
+      //   selectedTrainny:obj.name,
+      //   selectedTrainnyId:obj._id
+      // })
+      this.setState({
+        trainnyProfile:res.content[0]
       })
     }
   }
@@ -68,13 +77,14 @@ class BlogPosts extends React.Component {
 
   handleTrainner =  async () =>{
     let obj = {
+      profileDetail:this.state.trainnyProfile,
       trainnerName:this.state.selectedTrainner,
-      trainnyName:this.state.selectedTrainny,
+      trainnyName:this.state.trainnyProfile,
       trainnerId:this.state.selectedTrainnerId,
-      trainnyId:this.state.selectedTrainnyId
+      trainnyId:this.state.trainnyProfile
     }
     console.log(obj,'checking obj2')
-    let res = await HttpUtils.post('updateuser',obj);
+     let res = await HttpUtils.post('updateuser',obj);
      console.log(res,'server response')
      console.log('trainnerName',this.state.selectedTrainner);
      console.log('trainnyName',this.state.selectedTrainny);
