@@ -187,7 +187,7 @@ class NewUser extends React.Component {
                                         <div className="col-md-8">
                                             <select name="type" className="form-control" onChange={this.changeStatus}>
                                                 <option>trainner</option>
-                                                <option>trainee</option>
+                                                {/* <option>trainee</option> */}
                                             </select>
                                         </div>
                                     </div>
