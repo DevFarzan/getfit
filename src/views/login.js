@@ -52,9 +52,11 @@ class Login extends React.Component {
         }
     }
     render() {
+
         if (this.state.redirect) {
             return <Redirect to="/blog-overview" />
         }
+        console.log('login form')
         return (
             <div className="row">
                 <div className="col-md-6" style={{ marginTop: '10%' }}>
