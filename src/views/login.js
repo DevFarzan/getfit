@@ -16,49 +16,62 @@ class Login extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            name: ' ',
-            email: ' ',
-            redirect: false
+            name: '',
+            email: '',
+            redirect: false,
+            popUpAlert: false
         };
     }
 
     handleChange = (e) => {
         this.setState({
-            [e.target.name]: e.target.value
+            [e.target.name]: e.target.value,
+            popUpAlert: false
         })
     }
 
     onSubmit = (e) => {
         let database = [];
         e.preventDefault();
-        const form = {
-            name: this.state.name,
-            email: this.state.email
-        }
+        if (this.state.name != '' && this.state.email != '') {
+            const form = {
+                name: this.state.name,
+                email: this.state.email
+            }
 
-        database.push(form);
-        this.setState({
-            name: '',
-            email: ''
-        })
+            database.push(form);
+            this.setState({
+                name: '',
+                email: '',
+                popUpAlert: false
+            })
+        }
+        else {
+            this.setState({
+                popUpAlert: true
+            })
+        }
         console.log(database, 'checking');
-        if (database.length > 0) {
-            if (database[0].name == 'admin' || database.email[0] == '123') {
-                console.log('hit')
-                this.setState({
-                    redirect: true
-                })
+        if (database) {
+            if (database.length > 0) {
+                if (database[0].name == 'admin' || database.email[0] == '123') {
+                    console.log('hit')
+                    this.setState({
+                        redirect: true
+                    })
+                }
             }
         }
     }
     render() {
-
+        const { popUpAlert } = this.state;
         if (this.state.redirect) {
             return <Redirect to="/blog-overview" />
         }
         console.log('login form')
         return (
             <div className="row">
+                {popUpAlert && alert('Kindly cheak your user name or password')}
                 <div className="col-md-6" style={{ marginTop: '10%' }}>
                     <div className="login-form">
                         <form action="/examples/actions/confirmation.php" method="post">
