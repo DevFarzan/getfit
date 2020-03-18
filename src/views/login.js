@@ -16,33 +16,43 @@ class Login extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            name: '',
-            email: '',
+            userName: '',
+            password: '',
             redirect: false,
             popUpAlert: false
         };
     }
 
-    handleChange = (e) => {
+    handleChangeUserName = (e) => {
+        console.log(e.target.value, 'e.target.value user name')
         this.setState({
-            [e.target.name]: e.target.value,
+            userName: e.target.value,
             popUpAlert: false
         })
     }
 
+    handleChangePassword = (e) => {
+        console.log(e.target.value, 'e.target.value password')
+
+        this.setState({
+            password: e.target.value,
+            popUpAlert: false
+        })
+    }
     onSubmit = (e) => {
         let database = [];
         e.preventDefault();
-        if (this.state.name != '' && this.state.email != '') {
+        if (this.state.userName != '' && this.state.password != '') {
             const form = {
-                name: this.state.name,
-                email: this.state.email
+                userName: this.state.userName,
+                password: this.state.password
             }
 
+            console.log(form, 'form data')
             database.push(form);
             this.setState({
-                name: '',
-                email: '',
+                userName: '',
+                password: '',
                 popUpAlert: false
             })
         }
@@ -54,11 +64,23 @@ class Login extends React.Component {
         console.log(database, 'checking');
         if (database) {
             if (database.length > 0) {
-                if (database[0].name == 'admin' || database.email[0] == '123') {
-                    console.log('hit')
-                    this.setState({
-                        redirect: true
-                    })
+                for (var i = 0; i < database.length; i++) {
+                    console.log(database[i], 'i')
+                    if (database[i].userName == 'admin' && database[i].password == '123') {
+                        console.log('hit')
+                        this.setState({
+                            redirect: true,
+                            popUpAlert: false
+
+                        })
+                    }
+                    else {
+                        this.setState({
+                            redirect: false,
+                            popUpAlert: true
+                        })
+                    }
+
                 }
             }
         }
@@ -78,13 +100,13 @@ class Login extends React.Component {
                             <h2 className="text-center">Log in</h2>
                             <div className="form-group">
                                 <input type="text" className="form-control" name='name'
-                                    value={this.state.name}
-                                    onChange={e => this.handleChange(e)} placeholder="Username" required="required" />
+                                    value={this.state.userName}
+                                    onChange={e => this.handleChangeUserName(e)} placeholder="Username" required="required" />
                             </div>
                             <div class="form-group">
-                                <input type="password" className="form-control" placeholder="Password" name='email'
-                                    value={this.state.email}
-                                    onChange={e => this.handleChange(e)} required="required" />
+                                <input type="password" className="form-control" placeholder="Password" name='password'
+                                    value={this.state.password}
+                                    onChange={e => this.handleChangePassword(e)} required="required" />
                             </div>
                             <div class="form-group">
                                 <button type="submit" onClick={(e) => this.onSubmit(e)} className="btn btn-primary btn-block">Log in</button>
