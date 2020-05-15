@@ -11,6 +11,7 @@ export default () => (
   <Router basename={process.env.REACT_APP_BASENAME || ""}>
     <div>
       {routes.map((route, index) => {
+        console.log('Routes >>', routes);
         return (
           <Route
             key={index}
