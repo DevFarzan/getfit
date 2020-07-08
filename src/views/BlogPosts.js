@@ -95,7 +95,11 @@ class BlogPosts extends React.Component {
    getAllTrainner(){
     fetch('https://getfit-server.herokuapp.com/gettrainner')
   .then(response => response.json())
-  .then(data => this.setState({ allUsers:data.content}));
+  .then(data => this.setState({ allUsers:data.content},
+    ()=>{
+      console.log('Server Trainer DAta >>', this.state.allUsers)
+    }
+    ));
   }
 
   getAllTrainne(){

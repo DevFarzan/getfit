@@ -1,13 +1,14 @@
 import firebase from 'firebase';
 
 const config = {
-    apiKey: "AIzaSyCrtuXYX_EYef2zSbdKnbKMROkH65pFrX4",
-    authDomain: "getfit-application.firebaseapp.com",
-    databaseURL: "https://getfit-application.firebaseio.com",
-    projectId: "getfit-application",
-    storageBucket: "getfit-application-react-native-appspot.com",
-    messagingSenderId: "253025208867",
-    appId: "1:253025208867:web:bd3b867d48f7fe6e"
+    apiKey: "AIzaSyATm5xzvAfcaSD5gYJ-ZFHF_d-WGt0Ju1A",
+    authDomain: "get-fit-athletic-82370.firebaseapp.com",
+    databaseURL: "https://get-fit-athletic-82370.firebaseio.com",
+    projectId: "get-fit-athletic-82370",
+    storageBucket: "get-fit-athletic-82370.appspot.com",
+    messagingSenderId: "225918059123",
+    appId: "1:225918059123:web:a44961a334e98f32bca006",
+    measurementId: "G-YN19MT1RLK"
  }
 
  const firebaseApp = firebase.initializeApp(config);

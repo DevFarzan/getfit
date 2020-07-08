@@ -53,7 +53,7 @@ class NewUser extends React.Component {
 
     handleSubmit (event){
     event.preventDefault();
-    console.log(event.target.value)
+    console.log('Target Event Value >>',event.target.value)
     const data = new FormData(event.target);
     console.log(data.get('username'));
      this.state.obj = {
@@ -186,7 +186,7 @@ class NewUser extends React.Component {
                                         </div>
                                         <div className="col-md-8">
                                             <select name="type" className="form-control" onChange={this.changeStatus}>
-                                                <option>trainner</option>
+                                                <option>trainer</option>
                                                 {/* <option>trainee</option> */}
                                             </select>
                                         </div>
