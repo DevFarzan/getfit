@@ -65,8 +65,10 @@ class NewUser extends React.Component {
     }
     postUserByAdmin = async (obj) =>{
         let response = await HttpUtils.post('adminuser',obj);
+        // let sqlDatabase = await fetch('http://crm.getfitathletic.pk/webapi/api/UpdateUserType?UserID=123&Type=1')
+        // console.log('sqlDatabase >>>', await sqlDatabase.json());
         console.log(response,'checking user')
-        console.log(NotificationManager);
+        // console.log(NotificationManager);
         this.setState({
             alertSuccess:true
         })
@@ -79,12 +81,12 @@ class NewUser extends React.Component {
             userEmails:allEmails.content
             
         })
-        console.log(this.state.userEmail,'checking')
+        //console.log(this.state.userEmail,'checking')
     }
 
     handleUserByEmail = async (event) =>{
         let selectedEmail = JSON.parse(event.target.value);
-        console.log(selectedEmail);
+        console.log('handleUserByEmail >>',selectedEmail);
         this.setState({
             selectedId:selectedEmail.id
         })
