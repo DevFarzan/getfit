@@ -67,8 +67,8 @@ class NewUser extends React.Component {
         let response = await HttpUtils.post('adminuser',obj);
         // let sqlDatabase = await fetch('http://crm.getfitathletic.pk/webapi/api/UpdateUserType?UserID=123&Type=1')
         // console.log('sqlDatabase >>>', await sqlDatabase.json());
-        console.log(response,'checking user')
-        // console.log(NotificationManager);
+        // console.log(response,'checking user')
+        console.log(NotificationManager);
         this.setState({
             alertSuccess:true
         })
